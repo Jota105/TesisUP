@@ -65,9 +65,9 @@ def generate_predictions(model, img_dir, out_filepath, batch_size=BATCH_SIZE):
         for idx in range(predictions[ii].shape[-1]):
             pd_dict[str(ii) + "_" + str(idx)] = np.transpose(predictions[ii])[idx]
             order.append(str(ii) + "_" + str(idx))
-            
+          
     compare = pd.DataFrame(data=pd_dict)
-    
+  
     compare = compare[order]
     compare.to_csv(out_filepath, index=False)
     print("Done")  
@@ -136,4 +136,5 @@ def show_filter_responses(model, layer_index, input_img_path, save_dir=None, fil
     )
     pl.suptitle(layer.name)
     util.nice_imshow(pl.gca(), out_img, cmap=cm.binary)
+
 
